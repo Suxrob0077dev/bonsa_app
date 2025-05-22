@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Inner Banner -->
+<div class="inner-banner inner-bg6">
+  <div class="container">
+    <div class="inner-title text-center">
+      <h3>Sign Up</h3>
+      <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><i class="bx bxs-chevrons-right"></i></li>
+        <li>Sign Up</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- Inner Banner End -->
+
+<!-- Start Sign Up Area -->
+<section class="sign-up-area ptb-100">
+  <div class="container">
+    <div class="section-title text-center">
+      <span>Sign Up</span>
+      <h2>Create An Account!</h2>
+      <p>
+        It is a long established fact that a reader will be distracted by the
+        readable content of a page when looking at its layout.
+      </p>
+    </div>
+    <div class="contact-wrap-form log-in-width">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <p>with your social network</p>
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <button class="login-social-btn" type="button">
+              <i class="bx bxl-google-plus"></i>
+            </button>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <button class="login-social-btn" type="button">
+              <i class="bx bxl-facebook"></i>
+            </button>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <button class="login-social-btn" type="button">
+              <i class="bx bxl-twitter"></i>
+            </button>
+          </div>
+
+          <div class="col-12">
+            <div class="form-group">
+              {{ form.username.errors }}
+              <input class="form-control" type="text" name="username" placeholder="Username" value="{{ form.username.value|default_if_none:'' }}" />
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-group">
+              {{ form.email.errors }}
+              <input class="form-control" type="email" name="email" placeholder="Email" value="{{ form.email.value|default_if_none:'' }}" />
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-group">
+              {{ form.password.errors }}
+              <input class="form-control" type="password" name="password" placeholder="Password" />
+            </div>
+          </div>
+
+          <div class="col-12 text-center">
+            <button class="default-btn btn-two" type="submit">Sign Up</button>
+          </div>
+
+          <div class="col-12">
+            <p class="account-desc">
+              Already have an account?
+              <a href="{% url 'login' %}">Sign In</a>
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- End Sign Up Area -->
+
+{% endblock content %}
